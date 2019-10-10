@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -28,6 +29,8 @@ public class Patient {
 	private String country;
 	private String state;
 	private String address;
+	
+	@OneToMany
 	private Set<Comment> comments;
 
 	public Patient() {

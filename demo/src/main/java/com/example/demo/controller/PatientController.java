@@ -33,7 +33,7 @@ public class PatientController {
 //		return mav;
 //	}
 	
-	@PostMapping
+	@PostMapping("/addComment")
 	private Comment createComment(@RequestBody Comment comment, @RequestParam Integer patientId) {
 		Patient patientFromDB = patientService.findPatient(patientId);
 		comment.setPatient(patientFromDB);
@@ -43,6 +43,11 @@ public class PatientController {
 	@GetMapping("/patients")
 	public List<Patient> showAllPatients(){
 		return patientService.getAllPatients();
+	}
+	
+	@GetMapping("/user-details")
+	public List<Comment> showComments(@RequestBody Patient patient){
+		return commentService.findCommentsOfPatient(patient);
 	}
 
 //	@RequestMapping(value = "/addPatient", method = RequestMethod.POST)
@@ -67,7 +72,7 @@ public class PatientController {
 		return patientService.create(patient);
 	}
 	
-	@PostMapping
+	@PostMapping("/update")
 	public Patient updatePatient(@RequestBody Patient patient) {
 		return patientService.update(patient.getId());
 	}

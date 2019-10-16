@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dao.CommentRepository;
 import com.example.demo.domain.Comment;
+import com.example.demo.domain.Patient;
 
 @Service
 public class CommentService {
@@ -24,6 +27,10 @@ public class CommentService {
 		comment.setPatient(commentFromDB.getPatient());
 		comment.setId(commentFromDB.getId());
 		return commentRepository.save(comment);
+	}
+	
+	public List<Comment> findCommentsOfPatient(Patient patient){
+		return commentRepository.findByPatient(patient);
 	}
 
 }

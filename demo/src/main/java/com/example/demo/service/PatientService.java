@@ -23,7 +23,6 @@ public class PatientService {
 		Patient patientFromDB = patientRepository.getOne(id);
 		patient.setFirstName(patientFromDB.getFirstName());
 		patient.setLastName(patientFromDB.getLastName());
-		patient.setDateOfBirth(patientFromDB.getDateOfBirth());
 		patient.setAge(patientFromDB.getAge());
 		patient.setSex(patientFromDB.getSex());
 		patient.setCountry(patientFromDB.getCountry());
